@@ -56,7 +56,7 @@ class ApiKeyManager:
 class Modelloader:
     def __init__(self):
         if os.getenv("ENV", "local").lower() != "production":
-            load_dotenv()
+            load_dotenv(override=True)
             log.info("Running in LOCAL mode: .env loaded")
         else:
             log.info("Running in PRODUCTION mode")
