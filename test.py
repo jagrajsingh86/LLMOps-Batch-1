@@ -2,6 +2,7 @@
 
 import os
 from  pathlib import Path
+from src.docanalyzer.data_analysis import DocumentAnalyzer
 from src.document_ingestion.data_ingestion import DocHandler       # Your PDFHandler class
 
 # Path to the PDF you want to test
@@ -31,16 +32,16 @@ def main():
         text_content = handler.read_pdf(saved_path)
         print(f"Extracted text length: {len(text_content)} chars\n")
 
-        # # ---------- STEP 2: DATA ANALYSIS ----------
-        # print("Starting metadata analysis...")
-        # analyzer = DocumentAnalyzer()  # Loads LLM + parser
+        # ---------- STEP 2: DATA ANALYSIS ----------
+        print("Starting metadata analysis...")
+        analyzer = DocumentAnalyzer()  # Loads LLM + parser
         
-        # analysis_result = analyzer.analyze_document(text_content)
+        analysis_result = analyzer.analyze_document(text_content)
 
-        # ---------- STEP 3: DISPLAY RESULTS ----------
-        # print("\n=== METADATA ANALYSIS RESULT ===")
-        # for key, value in analysis_result.items():
-            # print(f"{key}: {value}")
+        #--------- STEP 3: DISPLAY RESULTS ----------
+        print("\n=== METADATA ANALYSIS RESULT ===")
+        for key, value in analysis_result.items():
+            print(f"{key}: {value}")
 
     except Exception as e:
         print(f"Test failed: {e}")
