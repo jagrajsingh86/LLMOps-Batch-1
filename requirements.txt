@@ -13,3 +13,4 @@ pyyaml
 pydantic
 
 langchain_google_genai
+PyMuPDF
