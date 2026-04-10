@@ -54,6 +54,7 @@ from src.document_ingestion.data_ingestion import DocHandler       # Your PDFHan
 # Testing code for document comparison using LLMs
 
 import io
+import pandas as pd
 from pathlib import Path
 from src.document_ingestion.data_ingestion import DocumentComparer
 from src.doccompare.documentcomparer import DocumentComparerLLM
@@ -94,6 +95,8 @@ def test_compare_documents():
     df = llm_comparator.compare_documents(combined_text)
     
     print("\n Comparison DataFrame:\n")
+    pd.set_option('display.max_colwidth', None)
+    pd.set_option('display.max_rows', None)
     print(df)
 
 if __name__ == "__main__":

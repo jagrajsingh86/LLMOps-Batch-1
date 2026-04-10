@@ -191,7 +191,7 @@ class DocumentComparer:
             log.error("Error combining documents", error=str(e), session=self.session_id)
             raise DocumentPortalException("Error combining documents", e) from e
 
-    def clean_old_sessions(self, keep_latest: int = 3):
+    def clean_old_sessions(self, keep_latest: int = 5):
         try:
             sessions = sorted([f for f in self.base_dir.iterdir() if f.is_dir()], reverse=True)
             for folder in sessions[keep_latest:]:
