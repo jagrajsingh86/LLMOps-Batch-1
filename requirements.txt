@@ -11,6 +11,6 @@ pypdf
 PyPDF2
 pyyaml
 pydantic
-
 langchain_google_genai
 PyMuPDF
+structlog
