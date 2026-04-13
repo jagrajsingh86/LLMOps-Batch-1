@@ -156,6 +156,7 @@ from src.document_ingestion.data_ingestion import DocHandler       # Your PDFHan
     
 ## testing for multidoc chat
 import sys
+import time
 from pathlib import Path
 from src.document_ingestion.data_ingestion import ChatIngestor
 from src.multidocchat.retrieval import ConversationalRAG
@@ -163,7 +164,7 @@ from src.multidocchat.retrieval import ConversationalRAG
 def test_document_ingestion_and_rag():
     try:
         test_files = [
-            "data/multi_doc_chat/Simple PDF 2.0 file.pdf",
+            "/Users/2099070/Documents/Cognizant/LLMOps Batch 1/data/multi_doc_chat/ad095e35.pdf",
         ]
         
         uploaded_files = []
@@ -191,7 +192,16 @@ def test_document_ingestion_and_rag():
         
         question = "What is this document about?"
         
-        answer=rag.invoke(question)
+        for attempt in range(3):
+            try:
+                answer = rag.invoke(question)
+                break
+            except Exception:
+                if attempt < 2:
+                    print(f"Attempt {attempt+1} failed, retrying in 5s...")
+                    time.sleep(5)
+                else:
+                    raise
         
         print("\n Question:", question)
         
