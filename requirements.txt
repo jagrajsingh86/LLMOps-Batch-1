@@ -13,4 +13,5 @@ pyyaml
 pydantic
 langchain_google_genai
 PyMuPDF
-structlog
+pytest
+pytest-cov
