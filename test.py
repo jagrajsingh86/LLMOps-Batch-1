@@ -1,9 +1,9 @@
 # # Test code for document ingestion and analysis using a PDFHandler and DocumentAnalyzer
 
-import os
-from  pathlib import Path
-from src.docanalyzer.data_analysis import DocumentAnalyzer
-from src.document_ingestion.data_ingestion import DocHandler       # Your PDFHandler class
+# import os
+# from  pathlib import Path
+# from src.docanalyzer.data_analysis import DocumentAnalyzer
+# from src.document_ingestion.data_ingestion import DocHandler       # Your PDFHandler class
 
 # # Path to the PDF you want to test
 # PDF_PATH = r"/Users/2099070/Documents/Cognizant/LLMOps Batch 1/data/attention.pdf"
@@ -155,104 +155,104 @@ from src.document_ingestion.data_ingestion import DocHandler       # Your PDFHan
     
     
 ## testing for multidoc chat
-import sys
-import time
-from pathlib import Path
-from src.document_ingestion.data_ingestion import ChatIngestor
-from src.multidocchat.retrieval import ConversationalRAG
+# import sys
+# import time
+# from pathlib import Path
+# from src.document_ingestion.data_ingestion import ChatIngestor
+# from src.multidocchat.retrieval import ConversationalRAG
 
-def test_document_ingestion_and_rag():
-    try:
-        test_files = [
-            "/Users/2099070/Documents/Cognizant/LLMOps Batch 1/data/multi_doc_chat/ad095e35.pdf",
-        ]
+# def test_document_ingestion_and_rag():
+#     try:
+#         test_files = [
+#             "/Users/2099070/Documents/Cognizant/LLMOps Batch 1/data/multi_doc_chat/ad095e35.pdf",
+#         ]
         
-        uploaded_files = []
+#         uploaded_files = []
         
-        for file_path in test_files:
-            if Path(file_path).exists():
-                uploaded_files.append(open(file_path, "rb"))
-            else:
-                print(f"File does not exist: {file_path}")
+#         for file_path in test_files:
+#             if Path(file_path).exists():
+#                 uploaded_files.append(open(file_path, "rb"))
+#             else:
+#                 print(f"File does not exist: {file_path}")
                 
-        if not uploaded_files:
-            print("No valid files to upload.")
-            sys.exit(1)
+#         if not uploaded_files:
+#             print("No valid files to upload.")
+#             sys.exit(1)
             
-        ingestor = ChatIngestor()
+#         ingestor = ChatIngestor()
         
-        retriever = ingestor.built_retriver(uploaded_files)
+#         retriever = ingestor.built_retriver(uploaded_files)
         
-        for f in uploaded_files:
-            f.close()
+#         for f in uploaded_files:
+#             f.close()
                 
-        session_id = "test_multi_doc_chat"
+#         session_id = "test_multi_doc_chat"
         
-        rag = ConversationalRAG(session_id=session_id, retriever=retriever)
+#         rag = ConversationalRAG(session_id=session_id, retriever=retriever)
         
-        question = "What is this document about?"
+#         question = "What is this document about?"
         
-        for attempt in range(3):
-            try:
-                answer = rag.invoke(question)
-                break
-            except Exception:
-                if attempt < 2:
-                    print(f"Attempt {attempt+1} failed, retrying in 5s...")
-                    time.sleep(5)
-                else:
-                    raise
+#         for attempt in range(3):
+#             try:
+#                 answer = rag.invoke(question)
+#                 break
+#             except Exception:
+#                 if attempt < 2:
+#                     print(f"Attempt {attempt+1} failed, retrying in 5s...")
+#                     time.sleep(5)
+#                 else:
+#                     raise
         
-        print("\n Question:", question)
+#         print("\n Question:", question)
         
-        print("Answer:", answer)
+#         print("Answer:", answer)
         
-        if not uploaded_files:
-            print("No valid files to upload.")
-            sys.exit(1)
+#         if not uploaded_files:
+#             print("No valid files to upload.")
+#             sys.exit(1)
             
-    except Exception as e:
-        print(f"Test failed: {str(e)}")
-        sys.exit(1)
+#     except Exception as e:
+#         print(f"Test failed: {str(e)}")
+#         sys.exit(1)
         
-if __name__ == "__main__":
-    test_document_ingestion_and_rag()
+# if __name__ == "__main__":
+#     test_document_ingestion_and_rag()
     
     
     
-# # Use this code snippet in your app.
-# # If you need more information about configurations
-# # or implementing the sample code, visit the AWS docs:
-# # https://aws.amazon.com/developer/language/python/
+# Use this code snippet in your app.
+# If you need more information about configurations
+# or implementing the sample code, visit the AWS docs:
+# https://aws.amazon.com/developer/language/python/
 
-# # import boto3
-# # from botocore.exceptions import ClientError
+# import boto3
+# from botocore.exceptions import ClientError
 
 
-# # def get_secret():
+# def get_secret():
 
-# #     secret_name = "api_keys"
-# #     region_name = "ap-southeast-2"
+#     secret_name = "api_keys"
+#     region_name = "ap-southeast-2"
 
-# #     # Create a Secrets Manager client
-# #     session = boto3.session.Session()
-# #     client = session.client(
-# #         service_name='secretsmanager',
-# #         region_name=region_name
-# #     )
+#     # Create a Secrets Manager client
+#     session = boto3.session.Session()
+#     client = session.client(
+#         service_name='secretsmanager',
+#         region_name=region_name
+#     )
 
-# #     try:
-# #         get_secret_value_response = client.get_secret_value(
-# #             SecretId=secret_name
-# #         )
-# #     except ClientError as e:
-# #         # For a list of exceptions thrown, see
-# #         # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
-# #         raise e
+#     try:
+#         get_secret_value_response = client.get_secret_value(
+#             SecretId=secret_name
+#         )
+#     except ClientError as e:
+#         # For a list of exceptions thrown, see
+#         # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
+#         raise e
 
-# #     secret = get_secret_value_response['SecretString']
+#     secret = get_secret_value_response['SecretString']
 
-# #     # Your code goes here.
+#     # Your code goes here.
 
 
 
