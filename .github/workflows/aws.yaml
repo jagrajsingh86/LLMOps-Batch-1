@@ -7,7 +7,7 @@ on:
 env:
   AWS_REGION: ap-southeast-2
   ECR_REPOSITORY: documentportal-llmops1
-  ECS_SERVICE: document-portal-service
+  ECS_SERVICE: ddocumentportaltd-service-jx97wqjw
   ECS_CLUSTER: document-portal-cluster-llmops1
   ECS_TASK_DEFINITION: .github/workflows/task_definition.json
   CONTAINER_NAME: document-portal-container
